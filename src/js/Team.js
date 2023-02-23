@@ -36,7 +36,7 @@ export default function showCreatingTeam() {
   // myTeam.add(first);
 
   myTeam.addAll(first, third, fourth);
- 
+
   myTeam.toArray();
   const arrayPeople = myTeam.members;
   console.log('Transfered Set to Array', arrayPeople);
