@@ -14,23 +14,33 @@ test('should create Character for name "String"', () => {
 });
 
 test('should be Error for name "NotString"', () => {
-  expect(() => new Character(150, 'Bowerman', 25, 25)).toThrow('Передаются некорректные значения');
+  expect(() => new Character(150, 'Bowerman', 25, 25)).toThrow(
+    'Передаются некорректные значения',
+  );
 });
 
 test('should be Error for too little name "A"', () => {
-  expect(() => new Character('A', 'Bowerman', 25, 25)).toThrow('Передаются некорректные значения');
+  expect(() => new Character('A', 'Bowerman', 25, 25)).toThrow(
+    'Передаются некорректные значения',
+  );
 });
 
 test('should be Error for too long name "ElevenLetters"', () => {
-  expect(() => new Character('ElevenLetters', 'Bowerman', 25, 25)).toThrow('Передаются некорректные значения');
+  expect(() => new Character('ElevenLetters', 'Bowerman', 25, 25)).toThrow(
+    'Передаются некорректные значения',
+  );
 });
 
 test('should be Error for the type "undefined"', () => {
-  expect(() => new Character('Bowerman', undefined, 25, 25)).toThrow('Передаются некорректные значения');
+  expect(() => new Character('Bowerman', undefined, 25, 25)).toThrow(
+    'Передаются некорректные значения',
+  );
 });
 
 test('should be Error for the type "Number"', () => {
-  expect(() => new Character('Bowerman', 150, 25, 25)).toThrow('Передаются некорректные значения');
+  expect(() => new Character('Bowerman', 150, 25, 25)).toThrow(
+    'Передаются некорректные значения',
+  );
 });
 
 test('should be Error for health <= 0 and level up', () => {

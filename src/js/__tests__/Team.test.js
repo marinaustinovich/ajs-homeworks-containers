@@ -1,49 +1,50 @@
 import showCreatingTeam, { Team } from '../Team';
 import Character from '../Character';
 
-test('should give new Team for empty prop members', () => {
-  const result = new Team();
+let result;
+
+beforeEach(() => {
+  result = new Team();
+});
+
+const createCharacter = (name, type, attack, defence) => new Character(name, type, attack, defence);
+
+test('should create an empty Team', () => {
   expect(result.members).toEqual(new Set());
 });
 
-test('should add once person to Team', () => {
-  const result = new Team();
-  const first = new Character('Marina', 'Bowerman', 50, 50);
+test('should add a person to Team', () => {
+  const first = createCharacter('Marina', 'Bowerman', 50, 50);
   result.add(first);
-  expect(result.members).toEqual(new Set().add(first));
+  expect(result.members).toEqual(new Set([first]));
 });
 
-test('should be Error for adding one person twice', () => {
-  const result = new Team();
-  const first = new Character('Marina', 'Bowerman', 50, 50);
+test('should throw Error when adding the same person twice', () => {
+  const first = createCharacter('Marina', 'Bowerman', 50, 50);
   result.add(first);
-  expect(() => result.add(first)).toThrow('The value isn`t unique');
+  expect(() => result.add(first)).toThrow(
+    'The character is already in the team.',
+  );
 });
 
-test('should add a few people to Team at once', () => {
-  const result = new Team();
-  const first = new Character('Marina', 'Bowerman', 50, 50);
-  const second = new Character('Ann', 'Daemon', 40, 20);
+test('should add multiple people to Team at once', () => {
+  const first = createCharacter('Marina', 'Bowerman', 50, 50);
+  const second = createCharacter('Ann', 'Daemon', 40, 20);
   result.addAll(first, second);
-  const expected = new Set();
-  expected.add(first);
-  expected.add(second);
-  expect(result.members).toEqual(expected);
+  expect(result.members).toEqual(new Set([first, second]));
 });
 
-test('should transfer Set to Array', () => {
-  const result = new Team();
-  const first = new Character('Marina', 'Bowerman', 50, 50);
-  const second = new Character('Ann', 'Daemon', 40, 20);
+test('should convert Team Set to an Array', () => {
+  const first = createCharacter('Marina', 'Bowerman', 50, 50);
+  const second = createCharacter('Ann', 'Daemon', 40, 20);
   result.addAll(first, second);
-  result.toArray();
-  expect(result.members).toEqual([first, second]);
+  expect(result.toArray()).toEqual([first, second]);
 });
 
-test('should show Team with four people and array Characters', () => {
+test('should show a Team with four people and array of Characters', () => {
   const expected = [
     {
-      name: 'Marina',
+      name: 'Mari',
       type: 'Bowerman',
       health: 100,
       level: 1,

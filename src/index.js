@@ -9,6 +9,9 @@ showCreatingTeam();
 // for the second task about Map
 showMap();
 
-// for the third tast about Map for game
-
-showSettings(['theme', 'light'], ['music', 'trance'], ['difficulty', 'nightmare']);
+// for the third task about Map for game
+showSettings(
+  ['theme', 'light'],
+  ['music', 'trance'],
+  ['difficulty', 'nightmare'],
+);

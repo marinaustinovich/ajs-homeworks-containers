@@ -1,6 +1,6 @@
 {
   "name": "ajs-homeworks-containers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "three tasks about Set and Map",
   "main": "index.js",
   "scripts": {

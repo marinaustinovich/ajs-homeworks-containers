@@ -1,17 +1,24 @@
 export class Settings {
   constructor() {
-    this.settings = new Map().set('theme', 'dark').set('music', 'trance').set('difficulty', 'easy');
+    this.defaultSettings = new Map()
+      .set('theme', 'dark')
+      .set('music', 'trance')
+      .set('difficulty', 'easy');
+
+    this.userSettings = new Map();
   }
 
-  getSettings(args) {
-    if (args.length !== 0) {
-      args.forEach((item) => this.settings.set(item[0], item[1]));
-    }
-    return this.settings;
+  setUserSetting(name, value) {
+    this.userSettings.set(name, value);
+  }
+
+  get settings() {
+    return new Map([...this.defaultSettings, ...this.userSettings]);
   }
 }
 
 export default function showSettings(...args) {
-  const settinsWithDefault = new Settings();
-  return settinsWithDefault.getSettings(args);
+  const settings = new Settings();
+  args.forEach(([name, value]) => settings.setUserSetting(name, value));
+  return settings.settings;
 }

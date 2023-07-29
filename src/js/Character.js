@@ -1,6 +1,6 @@
 export default class Character {
   constructor(name, type, attack, defence) {
-    if ((typeof name !== 'string') || (name.length < 2) || (name.length > 10)) {
+    if (typeof name !== 'string' || name.length < 2 || name.length > 10) {
       throw new Error('Передаются некорректные значения');
     }
 
